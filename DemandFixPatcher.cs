@@ -43,7 +43,7 @@ namespace DemandFix
     [HarmonyPatch(typeof(ZoneManager))]
     public static class ZoneManagerPatches
     {
-        private const int EmptyVisitorTreshold = 20; // [percent] when there is less empty then demand is generated
+        //private const int EmptyVisitorTreshold = 20; // [percent] when there is less empty then demand is generated
         private const int MaxCustomersDemand = 25; // [percent] when there is less empty then demand is generated
         // patch for method that calculates commercial demand
         [HarmonyPatch("CalculateCommercialDemand")]

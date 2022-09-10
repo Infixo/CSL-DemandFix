@@ -1,0 +1,21 @@
+﻿This is a custom tweak / fix for a Commercial Demand indicator which likes to stay above 50% for most of the game. The game automatically builds new commercial buildings if the demand is high thus leading very often to overinvesting in commercial zones.
+
+Source code at [url=https://github.com/Infixo/DemandFix]GitHub[/url]
+
+I will add some more info, depending on the comments and questions. I will keep "TESTING" flag for some time and see if any problems would be reported.
+
+Performance impact is actually positive. The formulas used here are faster than original ones.
+
+[u]Compatibility[/u]
+It changes the method that calculates commercial demand ofc. I am not aware of any popular mods that would be not compatible.
+
+[u]Detailed description[/u]
+
+Commercial Demand is basically a sum of two demands
+a) demand for workers, and
+b) demand for customers.
+
+The demand for workers is based on a well known 8:1 ratio that links homes (yes homes, not citizens) with commercial workers. I.e. if there is 1 worker per 8 homes then the demand is 0. The mod doesn't change this.
+
+The demand for customers (aka visitors) is based on what percentage of maximum number of customers there are (occupancy). The original formula is constructed in such a way that 66% occupancy gives 0, anything above 83% gives 50 and conversly anything below 50% gives -50. In a well managed city there is usually >90% of customers which means that commercial demand will always be at least 50.
+The mod changes the formula in the following way. 50% occupancy gives 0, 100% gives 25 and 0% gives -25. This allows to have a residual commercial demand in the ranges of 10-20, depending on how well the workers are managed (see above).
